@@ -2,13 +2,13 @@
   "name": "one-dark-regex-syntax",
   "theme": "syntax",
   "version": "0.0.0",
-  "description": "One Dark syntax theme, enhanced for regular expressions",
+  "description": "Atom's One Dark syntax theme, enhanced for regular expressions",
   "keywords": [
     "dark",
     "blue",
     "syntax"
   ],
-  "repository": "",
+  "repository": "https://github.com/wizard04wsu/theme-one-dark-regex",
   "license": "MIT",
   "engines": {
     "atom": ">0.50.0"
