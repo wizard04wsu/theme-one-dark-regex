@@ -4,9 +4,12 @@
 @syntax-regexp-color-flag: #7afd7a;
 @syntax-regexp-color-anchor: #ffffff;
 @syntax-regexp-color-group-delimiter: saturate(#e8e888, 30%, relative);
-@syntax-regexp-color-group-assertion: desaturate(darken(@syntax-regexp-color-group-delimiter, 35%, relative), 70%, relative);
-@syntax-regexp-color-group-tag: saturate(lighten(@syntax-regexp-color-group-assertion, 25%, relative), 50%, relative);
-@syntax-regexp-color-group-bg: fade(#668066, 7.1%);
+@syntax-regexp-color-group-delimiter-capturing: @syntax-regexp-color-backreference;
+@syntax-regexp-color-group-identifier: desaturate(darken(@syntax-regexp-color-group-delimiter, 35%, relative), 70%, relative);
+@syntax-regexp-color-group-identifier-capturing: desaturate(darken(@syntax-regexp-color-group-delimiter-capturing, 35%, relative), 70%, relative);
+@syntax-regexp-color-group-tag: saturate(lighten(@syntax-regexp-color-group-identifier, 25%, relative), 50%, relative);
+@syntax-regexp-color-group-tag-capturing: saturate(lighten(@syntax-regexp-color-group-identifier-capturing, 25%, relative), 50%, relative);
+@syntax-regexp-color-group-bg: fade(#e8e888, 1.5%);
 	//@syntax-regexp-color-group-bg: transparent;
 @syntax-regexp-color-backreference: #ffa15d;
 @syntax-regexp-color-backreference-tag: desaturate(darken(@syntax-regexp-color-backreference, 25%, relative), 55%, relative);
@@ -22,6 +25,8 @@
 
 //regexp colors inside a character set
 @syntax-regexp-color-character-set: #56b6c2;
+@syntax-regexp-color-character-set-bg: fade(#56b6c2, 6%);
+	//@syntax-regexp-color-character-set-bg: transparent;
 @syntax-regexp-color-character-set-delimiter: #88eeee;
 @syntax-regexp-charset-color-character-special: mix(@syntax-regexp-color-character-numeric, @syntax-regexp-color-character-set, 60%);
 @syntax-regexp-charset-color-character-class: mix(@syntax-regexp-color-character-class, @syntax-regexp-color-character-set, 60%);
@@ -31,7 +36,7 @@
 @syntax-regexp-charset-color-character-numeric: @syntax-regexp-color-character-numeric;
 @syntax-regexp-charset-color-character-numeric-charcode: @syntax-regexp-color-character-numeric-charcode;
 @syntax-regexp-charset-color-range-dash: @syntax-regexp-color-character-set-delimiter;
-@syntax-regexp-charset-color-range-bg: fade(#88eeee, 3.9%);
+@syntax-regexp-charset-color-range-bg: fade(#88eeee, 6%);
 	//@syntax-regexp-charset-color-range-bg: transparent;
 
 
@@ -142,6 +147,7 @@
 			
 			//character sets
 			.syntax--constant.syntax--other.syntax--character-class.syntax--set {
+				background-color: @syntax-regexp-color-character-set-bg;
 				
 				//invalid content
 				color: @syntax-regexp-color-invalid;
@@ -235,14 +241,26 @@
 				& > .syntax--punctuation.syntax--definition.syntax--group {
 					color: @syntax-regexp-color-group-delimiter;
 				}
+				&.syntax--capturing > .syntax--punctuation.syntax--definition.syntax--group {
+					color: @syntax-regexp-color-group-delimiter-capturing;
+				}
 				
 				//group type identifiers
 				& > .syntax--entity.syntax--name.syntax--type {
-					color: @syntax-regexp-color-group-assertion;
+					color: @syntax-regexp-color-group-identifier;
 					
 					//group names
 					.syntax--entity.syntax--name.syntax--tag {
 						color: @syntax-regexp-color-group-tag;
+						font-style: italic;
+					}
+				}
+				&.syntax--capturing > .syntax--entity.syntax--name.syntax--type {
+					color: @syntax-regexp-color-group-identifier-capturing;
+					
+					//group names
+					.syntax--entity.syntax--name.syntax--tag {
+						color: @syntax-regexp-color-group-tag-capturing;
 						font-style: italic;
 					}
 				}
