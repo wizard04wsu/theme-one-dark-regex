@@ -71,20 +71,25 @@
 		//the pattern
 		.syntax--meta.syntax--pattern {
 			
-			//invalid content
+			//invalid content (that isn't already dealt with)
 			color: @syntax-regexp-color-invalid;
 			
-			//invalid content that doesn't throw an error
+			//invalid content (that the grammar deals with)
+			.syntax--invalid {
+				color: @syntax-regexp-color-invalid !important;
+			}
+			
+			/*//invalid content that doesn't produce an error
 			.syntax--invalid {
 				color: @syntax-regexp-color-invalid-but-allowed !important;
 				
 				&.syntax--escape > .syntax--keyword.syntax--operator.syntax--escape-character {
 					opacity: 0.8 !important;
 				}
-			}
+			}*/
 			
 			//generic characters
-			.syntax--constant.syntax--character {
+			.syntax--string.syntax--other.syntax--non-syntax {
 				color: @syntax-regexp-color-content;
 			}
 			
