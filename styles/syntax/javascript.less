@@ -88,7 +88,7 @@
 				}
 			}*/
 			
-			//generic characters
+			//non-syntax characters
 			.syntax--string.syntax--other.syntax--non-syntax {
 				color: @syntax-regexp-color-content;
 			}
@@ -163,8 +163,8 @@
 					color: @syntax-regexp-color-character-set-delimiter;
 				}
 				
-				//inside the set -> generic characters
-				.syntax--string.syntax--unquoted {
+				//inside the set -> non-syntax characters
+				.syntax--string.syntax--other.syntax--non-syntax {
 					color: @syntax-regexp-color-character-set;
 				}
 				
