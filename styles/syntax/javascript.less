@@ -21,7 +21,7 @@
 @syntax-regexp-color-character-numeric: #4696e2;
 @syntax-regexp-color-character-numeric-charcode: desaturate(darken(@syntax-regexp-color-character-numeric, 25%, relative), 25%, relative);
 @syntax-regexp-color-invalid: #ff0000;
-@syntax-regexp-color-invalid-but-allowed: darken(@syntax-regexp-color-invalid, 5%);
+//@syntax-regexp-color-nonconforming: darken(@syntax-regexp-color-invalid, 5%);
 
 //regexp colors inside a character set
 @syntax-regexp-color-character-set: #56b6c2;
@@ -71,22 +71,23 @@
 		//the pattern
 		.syntax--meta.syntax--pattern {
 			
-			//invalid content (that isn't already dealt with)
+			//invalid content (that isn't already classed as such)
 			color: @syntax-regexp-color-invalid;
 			
-			//invalid content (that the grammar deals with)
-			.syntax--invalid {
-				color: @syntax-regexp-color-invalid !important;
-			}
-			
-			/*//invalid content that doesn't produce an error
-			.syntax--invalid {
-				color: @syntax-regexp-color-invalid-but-allowed !important;
+			/*.syntax--nonconforming,
+			.syntax--nonconforming * {
+				color: @syntax-regexp-color-nonconforming !important;
 				
 				&.syntax--escape > .syntax--keyword.syntax--operator.syntax--escape-character {
 					opacity: 0.8 !important;
 				}
 			}*/
+			
+			//invalid content (that's been classed by the grammar)
+			.syntax--invalid,
+			.syntax--invalid * {
+				color: @syntax-regexp-color-invalid !important;
+			}
 			
 			//non-syntax characters
 			.syntax--string.syntax--other.syntax--non-syntax {
@@ -154,8 +155,8 @@
 			.syntax--constant.syntax--other.syntax--character-class.syntax--set {
 				background-color: @syntax-regexp-color-character-set-bg;
 				
-				//invalid content
-				color: @syntax-regexp-color-invalid;
+//				//invalid content
+//				color: @syntax-regexp-color-invalid;
 				
 				//delimiters and negation operator '[' ']' '^'
 				.syntax--punctuation.syntax--definition,
