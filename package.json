@@ -1,7 +1,7 @@
 {
   "name": "one-dark-regex-syntax",
   "theme": "syntax",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Atom's One Dark syntax theme, enhanced for regular expressions",
   "keywords": [
     "dark",
