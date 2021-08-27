@@ -5,4 +5,5 @@ This is an enhancement of Atom's [One Dark syntax theme](https://github.com/atom
 
 Made, in particular, for use with the [javascript-regex](https://atom.io/packages/javascript-regex) package.
 
+[Example](./examples/with%20group%20shadow.PNG):
 ![](./examples/with%20group%20shadow.PNG)
